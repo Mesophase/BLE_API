@@ -171,6 +171,12 @@ public:
     const GapAdvertisingData &getAdvertisingData(void) const;
 
     /**
+     * @return  Read back advertising data. Useful for storing and
+     *          restoring payload.
+     */
+    const GapAdvertisingData &getScanResponse(void) const;
+
+    /**
      * Reset any advertising payload prepared from prior calls to
      * accumulateAdvertisingPayload().
      *
@@ -780,6 +786,11 @@ BLEDevice::setAdvertisingData(const GapAdvertisingData& newPayload)
 inline const GapAdvertisingData &
 BLEDevice::getAdvertisingData(void) const {
     return advPayload;
+}
+
+inline const GapAdvertisingData &
+BLEDevice::getScanResponse(void) const {
+    return scanResponse;
 }
 
 inline ble_error_t
